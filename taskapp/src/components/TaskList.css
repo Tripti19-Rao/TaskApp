@@ -1,0 +1,11 @@
+.customDivider {
+    font-size: 20px;
+    font-family: 'Roboto', sans-serif;
+
+  }
+
+.customForm{
+    width: 200px;
+    float:right;
+    padding-right:50px
+}

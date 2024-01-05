@@ -1,0 +1,22 @@
+h1 {
+    text-align: center;
+    padding-top: 20px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.button{
+    padding-left:15px
+}
+
+p {
+    color:rgb(80, 80, 94);
+    font-family: 'Roboto', sans-serif;
+}
+h2 {
+    font-family: 'Roboto', sans-serif;
+}
+
+.hi{
+    text-align: center;
+    padding-top: 20px;
+}
