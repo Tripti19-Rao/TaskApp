@@ -1,69 +1,69 @@
-import * as React from "react";
-import axios from "axios";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";
-import Dialog from "@mui/material/Dialog";
-import DialogActions from "@mui/material/DialogActions";
-import DialogContent from "@mui/material/DialogContent";
-import DialogTitle from "@mui/material/DialogTitle";
-import ToggleButton from "@mui/material/ToggleButton";
-import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
-import { useState } from "react";
+import * as React from "react"
+import axios from "axios"
+import Typography from "@mui/material/Typography"
+import Button from "@mui/material/Button"
+import TextField from "@mui/material/TextField"
+import Dialog from "@mui/material/Dialog"
+import DialogActions from "@mui/material/DialogActions"
+import DialogContent from "@mui/material/DialogContent"
+import DialogTitle from "@mui/material/DialogTitle"
+import ToggleButton from "@mui/material/ToggleButton"
+import ToggleButtonGroup from "@mui/material/ToggleButtonGroup"
+import { useState } from "react"
 
 function TaskItem(props) {
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [status, setStatus] = React.useState("in progress");
-  const [priority, setPriority] = React.useState("low");
+  const [title, setTitle] = useState("")
+  const [description, setDescription] = useState("")
+  const [status, setStatus] = React.useState("in progress")
+  const [priority, setPriority] = React.useState("low")
 
-  const [open, setOpen] = React.useState(false);
-  const [open1, setOpen1] = React.useState(false);
+  const [open, setOpen] = React.useState(false)
+  const [open1, setOpen1] = React.useState(false)
 
   const handleStatusChange = (event, newAlignment) => {
-    setStatus(newAlignment);
-  };
+    setStatus(newAlignment)
+  }
 
   const handlePriorityChange = (event, newAlignment) => {
-    setPriority(newAlignment);
-  };
+    setPriority(newAlignment)
+  }
 
   const handleViewkOpen = () => {
-    const key = props.mykey;
-    console.log(key);
+    const key = props.mykey
+    console.log(key)
     axios
       .get(`http://localhost:3052/api/tasks/${key}`)
       .then((response) => {
-        const result = response.data;
-        // console.log(result);
-        setTitle(result.title);
-        setDescription(result.description);
-        setStatus(result.status);
-        setPriority(result.priority);
+        const result = response.data
+        // console.log(result)
+        setTitle(result.title)
+        setDescription(result.description)
+        setStatus(result.status)
+        setPriority(result.priority)
       })
       .catch((err) => {
-        console.log(err.message);
-      });
-    setOpen1(true);
-  };
+        console.log(err.message)
+      })
+    setOpen1(true)
+  }
 
   const handleEditkOpen = () => {
-    const key = props.mykey;
-    // console.log(key);
+    const key = props.mykey
+    // console.log(key)
     axios
       .get(`http://localhost:3052/api/tasks/${key}`)
       .then((response) => {
-        const result = response.data;
-        setTitle(result.title);
-        setDescription(result.description);
-        setStatus(result.status);
-        setPriority(result.priority);
+        const result = response.data
+        setTitle(result.title)
+        setDescription(result.description)
+        setStatus(result.status)
+        setPriority(result.priority)
       })
       .catch((err) => {
-        console.log(err.message);
-      });
-    setOpen(true);
-  };
+        console.log(err.message)
+      })
+    setOpen(true)
+  }
 
   const handleEdit = () => {
     const obj = {
@@ -71,25 +71,25 @@ function TaskItem(props) {
       description: description,
       status: status,
       priority: priority,
-    };
-    const id = props.mykey;
-    handleClose();
-    props.handleEdit(id, obj);
-  };
+    }
+    const id = props.mykey
+    handleClose()
+    props.handleEdit(id, obj)
+  }
 
   const handleDelete = () => {
-    const key = props.mykey;
-    console.log(`DELETEING key iS ${key}`);
-    props.handleDelete(key);
-  };
+    const key = props.mykey
+    console.log(`DELETEING key iS ${key}`)
+    props.handleDelete(key)
+  }
 
   const handleClose1 = () => {
-    setOpen1(false);
-  };
+    setOpen1(false)
+  }
 
   const handleClose = () => {
-    setOpen(false);
-  };
+    setOpen(false)
+  }
 
   return (
     <div>
@@ -138,7 +138,7 @@ function TaskItem(props) {
             variant="standard"
             value={title}
             onChange={(e) => {
-              setTitle(e.target.value);
+              setTitle(e.target.value)
             }}
           />
           <TextField
@@ -150,7 +150,7 @@ function TaskItem(props) {
             variant="standard"
             value={description}
             onChange={(e) => {
-              setDescription(e.target.value);
+              setDescription(e.target.value)
             }}
           />
           <p>Set Status</p>
@@ -189,6 +189,6 @@ function TaskItem(props) {
         Delete
       </Button>
     </div>
-  );
+  )
 }
-export default TaskItem;
+export default TaskItem

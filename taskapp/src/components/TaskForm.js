@@ -1,21 +1,21 @@
-import * as React from "react";
-import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";
-import Dialog from "@mui/material/Dialog";
-import DialogActions from "@mui/material/DialogActions";
-import DialogContent from "@mui/material/DialogContent";
-import DialogTitle from "@mui/material/DialogTitle";
-import Divider from "@mui/material/Divider";
-import ToggleButton from "@mui/material/ToggleButton";
-import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
-import { useState } from "react";
-import "./TaskForm.css";
+import * as React from "react"
+import Button from "@mui/material/Button"
+import TextField from "@mui/material/TextField"
+import Dialog from "@mui/material/Dialog"
+import DialogActions from "@mui/material/DialogActions"
+import DialogContent from "@mui/material/DialogContent"
+import DialogTitle from "@mui/material/DialogTitle"
+import Divider from "@mui/material/Divider"
+import ToggleButton from "@mui/material/ToggleButton"
+import ToggleButtonGroup from "@mui/material/ToggleButtonGroup"
+import { useState } from "react"
+import "./TaskForm.css"
 
 function TaskForm(props) {
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [status, setStatus] = React.useState("in progress");
-  const [priority, setPriority] = React.useState("low");
+  const [title, setTitle] = useState("")
+  const [description, setDescription] = useState("")
+  const [status, setStatus] = React.useState("in progress")
+  const [priority, setPriority] = React.useState("low")
 
   const handleSubmit = () => {
     const obj = {
@@ -23,33 +23,33 @@ function TaskForm(props) {
       description: description,
       status: status,
       priority: priority,
-    };
+    }
 
-    handleClose();
-    setTitle("");
-    setDescription("");
-    setStatus("in progress");
-    setPriority("low");
-    props.addTask(obj);
-  };
+    handleClose()
+    setTitle("")
+    setDescription("")
+    setStatus("in progress")
+    setPriority("low")
+    props.addTask(obj)
+  }
 
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(false)
 
   const handleClickOpen = () => {
-    setOpen(true);
-  };
+    setOpen(true)
+  }
 
   const handleClose = () => {
-    setOpen(false);
-  };
+    setOpen(false)
+  }
 
   const handleStatusChange = (event, newAlignment) => {
-    setStatus(newAlignment);
-  };
+    setStatus(newAlignment)
+  }
 
   const handlePriorityChange = (event, newAlignment) => {
-    setPriority(newAlignment);
-  };
+    setPriority(newAlignment)
+  }
 
   return (
     <div>
@@ -78,7 +78,7 @@ function TaskForm(props) {
               variant="standard"
               value={title}
               onChange={(e) => {
-                setTitle(e.target.value);
+                setTitle(e.target.value)
               }}
             />
             <TextField
@@ -90,7 +90,7 @@ function TaskForm(props) {
               variant="standard"
               value={description}
               onChange={(e) => {
-                setDescription(e.target.value);
+                setDescription(e.target.value)
               }}
             />
             <p>Set Status</p>
@@ -127,7 +127,7 @@ function TaskForm(props) {
         </Dialog>
       </React.Fragment>
     </div>
-  );
+  )
 }
 
-export default TaskForm;
+export default TaskForm
