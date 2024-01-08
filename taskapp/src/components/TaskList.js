@@ -17,18 +17,6 @@ import Typography from "@mui/material/Typography"
 import "./TaskList.css"
 
 function TaskList(props) {
-  const updateTask = (newArr) => {
-    props.updateTask(newArr)
-  }
-
-  const handleEdit = (id, obj) => {
-    props.handleEdit(id, obj)
-  }
-
-  const handleDelete = (id) => {
-    console.log(id)
-    props.handleDelete(id)
-  }
 
   //filter
   const handleFilter = (event) => {
@@ -85,15 +73,13 @@ function TaskList(props) {
             </TableRow>
           </TableHead>
           <TableBody>
-            {props.task
-              .filter((ele) => {
+            {props.task.filter((ele) => {
                 if (props.statusfilter === "null") {
                   return true
                 } else {
-                  return ele.status == props.statusfilter
+                  return ele.status === props.statusfilter
                 }
-              })
-              .map((task) => (
+              }).map((task) => (
                 <TableRow
                   key={task._id}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
@@ -106,8 +92,8 @@ function TaskList(props) {
                     <TaskItem
                       mykey={task._id}
                       task={task}
-                      handleDelete={handleDelete}
-                      handleEdit={handleEdit}
+                      handleDelete={props.handleDelete}
+                      handleEdit={props.handleEdit}
                     />
                   </TableCell>
                 </TableRow>

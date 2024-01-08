@@ -1,4 +1,5 @@
 import * as React from "react"
+import axios from 'axios'
 import Button from "@mui/material/Button"
 import TextField from "@mui/material/TextField"
 import Dialog from "@mui/material/Dialog"
@@ -24,13 +25,21 @@ function TaskForm(props) {
       status: status,
       priority: priority,
     }
+    axios.post("http://localhost:3052/api/tasks", obj)
+      .then((response) => {
+        const result = response.data
+        props.addTask(result)
+        handleClose()
+        setTitle("")
+        setDescription("")
+        setStatus("in progress")
+        setPriority("low")
+      })
+      .catch((err) => {
+        console.log(err.message)
+      })
 
-    handleClose()
-    setTitle("")
-    setDescription("")
-    setStatus("in progress")
-    setPriority("low")
-    props.addTask(obj)
+    
   }
 
   const [open, setOpen] = React.useState(false)

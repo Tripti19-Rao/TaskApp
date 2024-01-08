@@ -35,7 +35,6 @@ function TaskItem(props) {
       .get(`http://localhost:3052/api/tasks/${key}`)
       .then((response) => {
         const result = response.data
-        // console.log(result)
         setTitle(result.title)
         setDescription(result.description)
         setStatus(result.status)
@@ -49,7 +48,6 @@ function TaskItem(props) {
 
   const handleEditkOpen = () => {
     const key = props.mykey
-    // console.log(key)
     axios
       .get(`http://localhost:3052/api/tasks/${key}`)
       .then((response) => {
@@ -73,14 +71,25 @@ function TaskItem(props) {
       priority: priority,
     }
     const id = props.mykey
+    axios.put(`http://localhost:3052/api/tasks/${id}`, obj)
+      .then((response) => {
+        const result = response.data
+        props.handleEdit(result)
+
+        
+      })
+      .catch((err) => {
+        console.log(err.message)
+      })
     handleClose()
-    props.handleEdit(id, obj)
   }
 
   const handleDelete = () => {
     const key = props.mykey
-    console.log(`DELETEING key iS ${key}`)
-    props.handleDelete(key)
+    axios.delete(`http://localhost:3052/api/tasks/${key}`).then((response) => {
+      const result = response.data
+      props.handleDelete(result)
+    })
   }
 
   const handleClose1 = () => {
