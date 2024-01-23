@@ -27,7 +27,7 @@ function TaskList(props) {
     <div>
       <br />
       <Divider className="customDivider">
-        You have {props.task.length} tasks{" "}
+        You have {props.task.length} tasks
       </Divider>
       <br />
       <div>

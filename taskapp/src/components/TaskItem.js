@@ -30,7 +30,6 @@ function TaskItem(props) {
 
   const handleViewkOpen = () => {
     const key = props.mykey
-    console.log(key)
     axios
       .get(`http://localhost:3052/api/tasks/${key}`)
       .then((response) => {
